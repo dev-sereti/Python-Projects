@@ -7,7 +7,6 @@ MONEY_PLACES = Decimal("0.01")
 def to_decimal(text: str) -> Decimal:
 
     # Convert user text to Decimal safely.
-    # Allows commas in numbers like '1,234.56'.
    
     cleaned = text.strip().replace(",", "")
     if cleaned == "":
@@ -32,4 +31,4 @@ class TipSplitterApp(tk.Tk):
         
         
         ttk.Label(main,text="Bill Amount :").grid(row=0,column=0,sticky="w")
-        self.bill_var = tk.StringVar(value=)
+        self.bill_var = tk.StringVar(value="0.00")
