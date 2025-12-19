@@ -19,7 +19,7 @@ class TipSplitterApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Tip Calculator + Bill Splitter")
-        self.resizable(False, False)
+        self.resizable(False, True)
         self._build_ui()
 
     def _build_ui(self):
@@ -31,4 +31,3 @@ class TipSplitterApp(tk.Tk):
         ttk.Label(main,text="Bill Amount :").grid(row=0,column=0,sticky="w")
         self.bill_var = tk.StringVar(value="0.00")
 
-        
