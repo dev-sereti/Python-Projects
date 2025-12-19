@@ -15,3 +15,10 @@ def to_decimal (text:str) -> Decimal:
 def money(d:Decimal) -> Decimal:
     return d.quantize(MONEY_PLACES,rounding=ROUND_HALF_UP)
 
+class TipSplitterApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Tip Calculator + Bill Splitter")
+        self.resizable(False,False)
+        self._build_ui()
+
