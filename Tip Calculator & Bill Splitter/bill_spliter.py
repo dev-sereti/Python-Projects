@@ -5,9 +5,7 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 MONEY_PLACES = Decimal("0.01")
 
 def to_decimal(text: str) -> Decimal:
-
     # Convert user text to Decimal safely.
-   
     cleaned = text.strip().replace(",", "")
     if cleaned == "":
         raise InvalidOperation("Empty input")
