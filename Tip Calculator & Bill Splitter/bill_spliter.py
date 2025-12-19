@@ -1,6 +1,6 @@
 import tkinter as tk
-from tkinter ttk,messagebox
-from decimal import Decimal,InvalidOperation,ROUND_HALF_UP
+from tkinter import ttk, messagebox
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
 MONEY_PLACES = Decimal(("0.01"))
 
@@ -10,3 +10,8 @@ def to_decimal (text:str) -> Decimal:
     if cleaned == "":
         raise InvalidOperation("Empty input")
     return Decimal(cleaned)
+
+#Round to 2 decimal places using typical financial rounding.
+def money(d:Decimal) -> Decimal:
+    return d.quantize(MONEY_PLACES,rounding=ROUND_HALF_UP)
+
