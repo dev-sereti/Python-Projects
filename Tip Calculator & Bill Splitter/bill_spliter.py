@@ -26,7 +26,8 @@ class TipSplitterApp(tk.Tk):
         pad = 10
         main = ttk.Frame(self, padding=pad)
         main.grid(row=0, column=0, sticky="nsew")
-        
+
+        #Inputs
         
         ttk.Label(main,text="Bill Amount :").grid(row=0,column=0,sticky="w")
         self.bill_var = tk.StringVar(value="0.00")
