@@ -11,9 +11,9 @@ def to_decimal(text: str) -> Decimal:
         raise InvalidOperation("Empty input")
     return Decimal(cleaned)
 
-def money(d: Decimal) -> Decimal:
+def money(amount: Decimal) -> Decimal:
     """Round to 2 decimal places using typical financial rounding."""
-    return d.quantize(MONEY_PLACES, rounding=ROUND_HALF_UP)
+    return amount.quantize(MONEY_PLACES, rounding=ROUND_HALF_UP)
 
 class TipSplitterApp(tk.Tk):
     def __init__(self):
@@ -30,3 +30,5 @@ class TipSplitterApp(tk.Tk):
         
         ttk.Label(main,text="Bill Amount :").grid(row=0,column=0,sticky="w")
         self.bill_var = tk.StringVar(value="0.00")
+
+        
