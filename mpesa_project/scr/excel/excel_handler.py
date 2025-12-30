@@ -48,13 +48,19 @@ class ExcelHandler:
                 if not isinstance(column[0],Cell):
                     continue
                 column_letter =column[0].column_letter
+
+
+                if cell.value is not None:
+                    cell_length = len(str(cell.value))
+                    if cell_length > max_length:
+                        max_length = cell_length
                 
-                for cell in column:
-                    try:
-                        if len(str(cell.value)) > max_length:
-                            max_length = len(cell.value)
-                    except:
-                        pass
+                # for cell in column:
+                #     try:
+                #         if len(str(cell.value)) > max_length:
+                #             max_length = len(cell.value)
+                #     except:
+                #         pass
                 
                 adjusted_width = min(max_length + 2, 50)
                 ws.column_dimensions[column_letter].width = adjusted_width
