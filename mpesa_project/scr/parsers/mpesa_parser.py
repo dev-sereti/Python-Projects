@@ -38,3 +38,21 @@ class MpesaParser:
         }
     }
 
+@staticmethod
+def detect_transaction_type(message: str)-> Optional[str]:
+    """Detect the type of M-Pesa transaction"""
+    message_lower = message.lower()
+
+    if 'sent to' in message_lower:
+        return 'sent'
+    elif 'received' in message_lower and 'from' in message_lower:
+        return 'received'
+    elif 'withdaw' in message_lower:
+        return 'withdrawn'
+    elif 'paid to' in message_lower or 'paybill' in message_lower:
+        return 'paybill'
+    elif 'bought' in message_lower:
+        return 'airtime'
+    
+
+ 
