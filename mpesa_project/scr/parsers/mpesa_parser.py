@@ -53,6 +53,7 @@ def detect_transaction_type(message: str)-> Optional[str]:
         return 'paybill'
     elif 'bought' in message_lower:
         return 'airtime'
-    
+    return None
+
 
  
