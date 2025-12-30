@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-from src.gui.main_window import MPesaApp
+from scr.gui.main_window import MPesaApp
+
+# from src.gui.main_window import MPesaApp
 
 def main():
     root = tk.Tk()
