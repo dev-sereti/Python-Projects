@@ -60,5 +60,31 @@ def clean_amount(amount_str: str) -> float:
     """Clean and convert amount string to float"""
     return float(amount_str.replace(',',''))
 
+@staticmethod
+
+def parse_date(date_str: str, time_str: str) -> datetime:
+    """Parse date and time from Mpesa format"""
+
+    try:
+        date_formats = [
+            '%d/%m/%y %I:%M %p',
+            '%d/%m/%Y %I:%M %p',
+            '%d/%m/%y %H:%M',
+            '%d/%m/%Y %H:%M',
+            ]
+        datetime_str = f"{date_str} {time_str}".strip()
+        
+        for fmt in date_formats:
+            try:
+                return datetime.strptime(datetime_str,fmt)
+            except ValueError:
+                continue
+
+        return datetime.strptime(datetime_str,'%d/%m/%y %H:%M')
+    
+    except Exception as e:
+        raise ValueError(f"Could not parse date: {date_str} {time_str}.Error:{e}")
+    
+    
 
    
