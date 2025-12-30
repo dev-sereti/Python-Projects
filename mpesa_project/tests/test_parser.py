@@ -1,5 +1,5 @@
 import unittest
-from scr.
+from scr.parsers.mpesa_parser import MPesaParser
 # from src.parsers.mpesa_parser import MPesaParser
 
 class TestMPesaParser(unittest.TestCase):
@@ -13,12 +13,20 @@ class TestMPesaParser(unittest.TestCase):
         Transaction cost, Ksh15.00"""
         
         transaction = self.parser.parse_message(message)
-        
+
         self.assertIsNotNone(transaction)
+        assert transaction is not None  # type narrowing for Pylance
         self.assertEqual(transaction.transaction_code, 'RBK1234567')
         self.assertEqual(transaction.amount, 500.00)
         self.assertEqual(transaction.fee, 15.00)
         self.assertEqual(transaction.transaction_type, 'sent')
+
+        
+        # self.assertIsNotNone(transaction)
+        # self.assertEqual(transaction.transaction_code, 'RBK1234567')
+        # self.assertEqual(transaction.amount, 500.00)
+        # self.assertEqual(transaction.fee, 15.00)
+        # self.assertEqual(transaction.transaction_type, 'sent')
     
     def test_received_money(self):
         message = """RBK9876543 Confirmed. You have received Ksh1,000.00 from 
