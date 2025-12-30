@@ -92,3 +92,17 @@ def extract_field(self,message: str, pattern:str, group:int = 1) -> Optional[str
     if match:
         return match.group(group).strip()
     return None
+
+def parse_message (self,message: str) -> Optional[str]:
+    """Parse M-Pesa message and return Transaction object"""
+    try:
+        #Detect transaction type
+        trans_type = self.detect_transaction_type(message)
+
+        if not trans_type or trans_type not in self.PATTERNS:
+            raise ValueError (f"Unkown transaction type: {trans_type}")
+        
+        patterns = self.PATTERNS[trans_type]
+
+        #Extract transaction code
+        
