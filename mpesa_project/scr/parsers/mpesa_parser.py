@@ -55,5 +55,10 @@ def detect_transaction_type(message: str)-> Optional[str]:
         return 'airtime'
     return None
 
+@staticmethod
+def clean_amount(amount_str: str) -> float:
+    """Clean and convert amount string to float"""
+    return float(amount_str.replace(',',''))
 
- 
+
+   
