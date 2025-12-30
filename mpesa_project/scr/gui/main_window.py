@@ -1,9 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog, scrolledtext
 from datetime import datetime
-from src.parsers.mpesa_parser import MPesaParser
-from src.database.db_manager import DatabaseManager
-from src.excel.excel_handler import ExcelHandler
+from scr.parsers.mpesa_parser import MPesaParser
+from scr.database.db_manager import DatabaseManager
+from scr.excel.excel_handler import ExcelHandler
+
 
 class MPesaApp:
     """Main GUI application"""
