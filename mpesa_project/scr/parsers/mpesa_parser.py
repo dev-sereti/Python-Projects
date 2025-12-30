@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 from typing import Optional, List
-from models.transaction import Transaction
+from scr.models.transaction import Transaction
 
 class MPesaParser:
     """Parse various M-Pesa message formats"""
