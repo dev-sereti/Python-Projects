@@ -13,9 +13,9 @@ class transaction:
 
     def to_dict(self):
         return{
-           'transaction_code:str':self.transaction_code,
+           'transaction_code':self.transaction_code,
            'amount:float':self.amount,
-           'date:datetime':self.date,
+           'date:datetime':self.date.strftime('%Y-%m-%d %H:%M:%S'),
            'fee:float':self.fee,
            'transaction_type:str':self.transaction_type
         }
