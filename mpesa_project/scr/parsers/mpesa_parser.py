@@ -85,6 +85,10 @@ def parse_date(date_str: str, time_str: str) -> datetime:
     except Exception as e:
         raise ValueError(f"Could not parse date: {date_str} {time_str}.Error:{e}")
     
-    
+def extract_field(self,message: str, pattern:str, group:int = 1) -> Optional[str]:
+    """ Extract a field using the regex pattern """
 
-   
+    match = re.search(pattern, message, re.IGNORECASE)
+    if match:
+        return match.group(group).strip()
+    return None
