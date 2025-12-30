@@ -28,5 +28,13 @@ class MpesaParser:
             'fee': r'Transaction cost[,:]?\s*Ksh([\d,]+\.?\d*)',
             'agent': r'from\s+(.+?)\s+',
         },
+         'paybill': {
+            'code': r'([A-Z0-9]{10})\s+confirmed',
+            'amount': r'Ksh([\d,]+\.?\d*)',
+            'date': r'on\s+(\d{1,2}/\d{1,2}/\d{2,4})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM)?)',
+            'fee': r'Transaction cost[,:]?\s*Ksh([\d,]+\.?\d*)',
+            'recipient': r'paid to\s+(.+?)(?:\.|on)',
+            'account': r'Account\s+(.+?)\s*(?:on|\.|Transaction)',
+        }
     }
 
