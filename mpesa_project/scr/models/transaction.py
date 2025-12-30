@@ -3,7 +3,7 @@ from datetime import  datetime
 from typing import Optional
 
 @dataclass
-class transaction:
+class Transaction:
     """M-Pesa transaction data model"""
     transaction_code:str
     amount:float
