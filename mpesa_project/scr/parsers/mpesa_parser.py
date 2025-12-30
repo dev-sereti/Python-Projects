@@ -110,8 +110,25 @@ def parse_message (self,message: str) -> Optional[str]:
             raise ValueError (f"Could not extract transaction code")
         
         #Extract amount
-
         amount_str = self.extract_field (message,patterns['amount'])
         if not amount_str:
             raise ValueError (f"Could not extract the amount")
         amount = self.clean_amount(amount_str)
+
+        #Extract date & time 
+        
+        date_match = re.search(patterns['date'], message, re.IGNORECASE)
+        if not date_match:
+            raise ValueError("Could not extract date")
+        
+        date_str = date_match.group(1)
+        time_str = date_match.group(2)
+        transaction_date = self.parse_date(date_str, time_str)
+
+        #Extract fee
+        fee_str = self.extract_field (message,patterns['fee'])
+        fee = self.clean_amount(fee_str) if fee_str else 0.0
+        
+        # if not fee_str:
+        #     raise ValueError (f"Could not extract fee")
+        
