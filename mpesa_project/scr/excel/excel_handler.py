@@ -34,10 +34,13 @@ class ExcelHandler:
                                      fill_type="solid")
             header_font = Font(bold=True, color="FFFFFF")
             
+            ws = wb.active
+            assert ws is not None
             for cell in ws[1]:
                 cell.fill = header_fill
                 cell.font = header_font
-                cell.alignment = Alignment(horizontal='center')
+                cell.alignment = Alignment(horizontal="center")
+
             
             # Auto-adjust column widths
             for column in ws.columns:
