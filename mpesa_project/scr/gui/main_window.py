@@ -26,7 +26,7 @@ class MPesaApp:
         """Setup the user interface"""
         # Main container
         main_frame = ttk.Frame(self.root, padding="10")
-        main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        main_frame.grid(row=0, column=0, sticky=("nsww"))
         
         # Title
         title = ttk.Label(main_frame, text="M-Pesa Transaction Manager", 
@@ -35,7 +35,7 @@ class MPesaApp:
         
         # Excel file selection
         excel_frame = ttk.LabelFrame(main_frame, text="Excel File", padding="5")
-        excel_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=5)
+        excel_frame.grid(row=1, column=0, columnspan=2, sticky=("we"), pady=5)
         
         self.excel_path_var = tk.StringVar(value="transactions.xlsx")
         ttk.Entry(excel_frame, textvariable=self.excel_path_var, width=60).grid(
@@ -47,10 +47,10 @@ class MPesaApp:
         
         # Message input
         input_frame = ttk.LabelFrame(main_frame, text="Paste M-Pesa Messages", padding="5")
-        input_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), pady=5)
+        input_frame.grid(row=2, column=0, columnspan=2, sticky=("nsew"), pady=5)
         
         self.message_text = scrolledtext.ScrolledText(input_frame, height=15, width=80)
-        self.message_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        self.message_text.grid(row=0, column=0, sticky=("nsew"))
         
         # Buttons
         button_frame = ttk.Frame(main_frame)
@@ -65,7 +65,7 @@ class MPesaApp:
         
         # Statistics
         stats_frame = ttk.LabelFrame(main_frame, text="Statistics", padding="5")
-        stats_frame.grid(row=4, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=5)
+        stats_frame.grid(row=4, column=0, columnspan=2, sticky=("we"), pady=5)
         
         self.stats_text = tk.Text(stats_frame, height=8, width=80)
         self.stats_text.grid(row=0, column=0)
@@ -74,7 +74,7 @@ class MPesaApp:
         self.status_var = tk.StringVar(value="Ready")
         status_bar = ttk.Label(main_frame, textvariable=self.status_var, 
                               relief=tk.SUNKEN, anchor=tk.W)
-        status_bar.grid(row=5, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=5)
+        status_bar.grid(row=5, column=0, columnspan=2, sticky=("we"), pady=5)
         
         # Configure grid weights
         self.root.columnconfigure(0, weight=1)
@@ -211,11 +211,11 @@ class ViewTransactionsWindow:
         
         # Scrollbar
         scrollbar = ttk.Scrollbar(self.window, orient=tk.VERTICAL, command=self.tree.yview)
-        self.tree.configure(yscroll=scrollbar.set)
+        self.tree.configure(yscrollcommand=scrollbar.set)
         
         # Layout
-        self.tree.grid(row=0, column=0, sticky=(tk.N, tk.S, tk.E, tk.W))
-        scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
+        self.tree.grid(row=0, column=0, sticky=("nsew"))
+        scrollbar.grid(row=0, column=1, sticky=("ns"))
         
         # Configure grid
         self.window.columnconfigure(0, weight=1)
