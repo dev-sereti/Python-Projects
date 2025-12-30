@@ -20,8 +20,7 @@ class TestMPesaParser(unittest.TestCase):
         self.assertEqual(transaction.amount, 500.00)
         self.assertEqual(transaction.fee, 15.00)
         self.assertEqual(transaction.transaction_type, 'sent')
-
-        
+          
         # self.assertIsNotNone(transaction)
         # self.assertEqual(transaction.transaction_code, 'RBK1234567')
         # self.assertEqual(transaction.amount, 500.00)
