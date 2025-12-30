@@ -13,7 +13,20 @@ class MpesaParser:
             'amount': r'Ksh([\d,]+\.?\d*)',
             'date': r'on\s+(\d{1,2}/\d{1,2}/\d{2,4})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM)?)',
             'fee': r'Transaction cost[,:]?\s*Ksh([\d,]+\.?\d*)',
-
-        }
+         },
+        'received': {
+            'code': r'([A-Z0-9]{10})\s+confirmed',
+            'amount': r'Ksh([\d,]+\.?\d*)',
+            'date': r'on\s+(\d{1,2}/\d{1,2}/\d{2,4})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM)?)',
+            'sender': r'from\s+(.+?)\s+on',
+            'fee': r'0\.00',  # Usually no fee for received
+        },
+        'withdrawn': {
+            'code': r'([A-Z0-9]{10})\s+confirmed',
+            'amount': r'Ksh([\d,]+\.?\d*)',
+            'date': r'on\s+(\d{1,2}/\d{1,2}/\d{2,4})\s+at\s+(\d{1,2}:\d{2}\s*(?:AM|PM)?)',
+            'fee': r'Transaction cost[,:]?\s*Ksh([\d,]+\.?\d*)',
+            'agent': r'from\s+(.+?)\s+',
+        },
     }
 
