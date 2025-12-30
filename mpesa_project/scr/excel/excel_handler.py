@@ -2,6 +2,7 @@ import pandas as pd
 from typing import List
 from pathlib import Path
 from openpyxl import load_workbook
+from openpyxl.cell.cell import Cell
 from openpyxl.styles import Font, PatternFill, Alignment
 from scr.models.transaction import Transaction
 
@@ -44,8 +45,9 @@ class ExcelHandler:
             
             # Auto-adjust column widths
             for column in ws.columns:
-                max_length = 0
-                column_letter = column[0].column_letter
+                if not isinstance(column[0],Cell):
+                    continue
+                column_letter =column[0].column_letter
                 
                 for cell in column:
                     try:
