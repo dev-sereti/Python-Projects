@@ -105,4 +105,13 @@ def parse_message (self,message: str) -> Optional[str]:
         patterns = self.PATTERNS[trans_type]
 
         #Extract transaction code
+        code = self.extract_field (message, patterns['code'])
+        if not code:
+            raise ValueError (f"Could not extract transaction code")
         
+        #Extract amount
+
+        amount_str = self.extract_field (message,patterns['amount'])
+        if not amount_str:
+            raise ValueError (f"Could not extract the amount")
+        amount = self.clean_amount(amount_str)
